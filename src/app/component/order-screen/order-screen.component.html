@@ -1,0 +1,49 @@
+
+  
+  <form>
+    <div class="row">
+      <div class="col-3">
+        <input required type="text" class="form-control" placeholder="Name" #name>
+      </div>
+      <div class="col-3">
+        <input type="number" class="form-control" placeholder="Quantity" #quantity>
+      </div>
+      <div class="col-3">
+        <mat-form-field>
+          <mat-label>Stocks</mat-label>
+          <mat-select #stock>
+            <mat-option *ngFor="let stock of stocks" [value]="stock.id">
+              {{stock.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>     
+      </div>
+      
+      <div class="col-2">
+        <input type="submit" class="form-control" value="Create Order" (click)="createOrder(name.value, quantity.value , stock)">
+      </div>
+    </div>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Person Name</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orderItems">
+            <td>{{order.personName}}</td>
+            <td>{{order.stockName}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{order.price}}</td>
+        </tr>
+    </tbody>
+  </table>
+
+  
+  
+  
